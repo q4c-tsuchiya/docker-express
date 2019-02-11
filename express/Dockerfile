@@ -6,9 +6,10 @@ ENV NODE_ENV="development"
 
 # 作業ディレクトリ作成&設定
 ENV APP_ROOT /src
+WORKDIR /src
 
 COPY mysrc/package.json $APP_ROOT
-RUN npm install && npm cache clean
+RUN npm install && npm cache --force clean
 
 COPY . $APP_ROOT
 EXPOSE 3000
