@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./express      # Dockerfile保存場所
+      dockerfile: Dockerfile    # Dockerfileファイル名
+    image: my-express-server                  # イメージ名
+    container_name: my-express-server-container         # コンテナ名
+    ports:                          # ポート接続
+      - 3000:3000
+    volumes:                        # mount workdir
+      - ./mysrc:/src
+    command: [sh, -c, npm install && npm start]
